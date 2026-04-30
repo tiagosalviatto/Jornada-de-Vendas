@@ -1,1 +1,1652 @@
-# Jornada-de-Vendas
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identidade & Rotina Operacional — Yandeh</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #E8471A;
+    --orange-d: #C0380E;
+    --orange-l: #FFF0EB;
+    --dark: #000202;
+    --dark-2: #1a1919;
+    --dark-3: #000202;
+    --slate: #3A3A58;
+    --white: #FFFFFF;
+    --off: #F6F4F1;
+    --gray: #9896B0;
+    --gray-l: #E4E3EF;
+    --teal: #ff00b0;
+    --teal-l: #ff8bdb;
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --roseta: #ff0061;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+    background: rgba(19,19,32,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-bg-circle.c1 {
+    width: 560px; height: 560px;
+    top: -120px; right: -100px;
+    background: radial-gradient(circle, rgba(232,71,26,0.14) 0%, transparent 70%);
+  }
+  .hero-bg-circle.c2 {
+    width: 300px; height: 300px;
+    bottom: 60px; right: 120px;
+    background: radial-gradient(circle, rgba(232,71,26,0.08) 0%, transparent 70%);
+  }
+  .hero-bg-circle.c3 {
+    width: 200px; height: 200px;
+    bottom: -60px; left: 30%;
+    background: radial-gradient(circle, rgba(0,168,150,0.08) 0%, transparent 70%);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px; height: 2px;
+    background: var(--orange);
+  }
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    max-width: 820px;
+    margin-bottom: 2rem;
+  }
+  .hero-headline span { color: var(--orange); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 520px;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--orange);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--orange-d); transform: translateY(-2px); }
+  .hero-cta svg { width: 16px; height: 16px; }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    opacity: 0.6;
+  }
+  .hero-scroll-hint .line {
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, var(--orange), transparent);
+    animation: pulse-line 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 6rem 2.5rem; }
+  .section-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-title span { color: var(--orange); }
+
+  /* ─── QUEM SOMOS ─── */
+  #quem-somos { background: var(--dark-2); }
+  .quem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .quem-left .big-quote {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--orange);
+    border-left: 4px solid var(--orange);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+  .quem-left p { color: var(--gray); font-size: 1.05rem; line-height: 1.75; }
+  .pillar-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    background: var(--dark-3);
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .pillar-card:hover { border-color: rgba(232,71,26,0.4); transform: translateX(4px); }
+  .pillar-icon {
+    font-size: 1.6rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(232,71,26,0.1);
+    border-radius: 8px;
+  }
+  .pillar-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .pillar-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.55; }
+
+  /* ─── PROTAGONISTA ─── */
+  #protagonista { background: var(--dark); }
+  .versus-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .vs-badge {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--gray);
+    align-self: center;
+    padding-top: 2rem;
+  }
+  .versus-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .versus-card.protagonist { border-color: rgba(232,71,26,0.5); }
+  .versus-card-header {
+    padding: 1.25rem 1.5rem;
+    background: var(--roseta);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .versus-card.protagonist .versus-card-header { background: var(--orange); }
+  .versus-card-header .tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(#ffd8e7);
+    margin-bottom: 0.4rem;
+  }
+  .versus-card.protagonist .versus-card-header .tag { color: rgba(255,255,255,0.7); }
+  .versus-card-header h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+  .versus-card-body { padding: 1.5rem; background: var(--dark-2); }
+  .versus-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
+    color: var(--gray);
+  }
+  .versus-item:last-child { border-bottom: none; }
+  .versus-item .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gray);
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .versus-card.protagonist .versus-item { color: #C8C7E0; }
+  .versus-card.protagonist .versus-item .dot { background: var(--orange); }
+  .versus-verdict {
+    font-size: 0.82rem;
+    font-style: italic;
+    padding: 1rem 1.5rem;
+    background: var(--dark-3);
+    color: var(--gray);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .versus-card.protagonist .versus-verdict {
+    background: rgba(232,71,26,0.08);
+    color: var(--orange);
+    border-top-color: rgba(232,71,26,0.2);
+  }
+
+  /* ─── ATRIBUTOS ─── */
+  #atributos { background: var(--dark-2); }
+  .attr-intro {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    text-transform: uppercase;
+    color: var(--orange);
+    letter-spacing: 0.02em;
+    margin-bottom: 2.5rem;
+    max-width: 640px;
+  }
+  .attr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .attr-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--dark);
+    transition: background 0.2s;
+  }
+  .attr-item:hover { background: var(--dark-3); }
+  .attr-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: rgba(232,71,26,0.2);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .attr-item-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .attr-item p { font-size: 0.88rem; color: #C0BFD8; line-height: 1.5; }
+
+  /* ─── OBJETIVO ─── */
+  #objetivo { background: var(--dark); }
+  .objetivo-quote {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    text-transform: uppercase;
+    border-left: 5px solid var(--orange);
+    padding-left: 1.5rem;
+    margin: 2rem 0 3rem;
+    line-height: 1.1;
+  }
+  .objetivo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .obj-card {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .obj-card-top {
+    padding: 1.5rem;
+    position: relative;
+  }
+  .obj-card:nth-child(1) .obj-card-top { background: var(--orange); }
+  .obj-card:nth-child(2) .obj-card-top { background: var(--teal); }
+  .obj-card:nth-child(3) .obj-card-top { background: var(--roseta); border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .obj-num {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: rgba(0,0,0,0.15);
+    line-height: 1;
+  }
+  .obj-card-top h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    position: relative;
+  }
+  .obj-card-body { padding: 1.5rem; background: var(--dark-2); }
+  .obj-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #fafafa;
+  }
+  .obj-item .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+  .obj-card:nth-child(1) .dot { background: var(--orange); }
+  .obj-card:nth-child(2) .dot { background: var(--teal); }
+  .obj-card:nth-child(3) .dot { background: var(--gray); }
+  .obj-foot {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--gray);
+    background: var(--dark-3);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* ─── ROTINA / JORNADA ─── */
+  #rotina { background: var(--dark-2); }
+  .jornada-timeline {
+    margin-top: 3rem;
+    position: relative;
+  }
+  .jornada-timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange), rgba(232,71,26,0.1));
+  }
+  .jornada-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+  .jornada-item:last-child { padding-bottom: 0; }
+  .jornada-time-col {
+    text-align: right;
+    padding-right: 2rem;
+    position: relative;
+  }
+  .jornada-time-col::after {
+    content: '';
+    position: absolute;
+    right: -7px;
+    top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 2px solid var(--dark-2);
+    box-shadow: 0 0 0 3px rgba(232,71,26,0.3);
+  }
+  .jornada-item.dim .jornada-time-col::after { background: var(--slate); box-shadow: none; }
+  .jornada-time {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--orange);
+    letter-spacing: 0.04em;
+  }
+  .jornada-item.dim .jornada-time { color: var(--gray); }
+  .jornada-body {
+    background: var(--dark-3);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: border-color 0.2s;
+  }
+  .jornada-body:hover { border-color: rgba(232,71,26,0.25); }
+  .jornada-body h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .jornada-body h3 span.ej { font-size: 1.2rem; }
+  .jornada-body p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .jornada-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+  .jtag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .jtag.orange { background: rgba(232,71,26,0.15); color: var(--orange); }
+  .jtag.teal { background: rgba(0,168,150,0.35); color: var(#388e32); }
+  .jtag.slate { background: rgba(58,58,88,0.6); color: var(--gray); }
+
+  /* ─── PDV ─── */
+  #pdv { background: var(--dark); }
+  .pdv-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+  .pdv-sidebar {
+    background: var(--orange);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 80px;
+  }
+  .pdv-sidebar h3 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .pdv-sidebar p { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 1.5rem; }
+  .pdv-tip {
+    background: rgba(0,0,0,0.15);
+    border-radius: 6px;
+    padding: 1rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .pdv-progress-wrap { margin-top: 1.5rem; }
+  .pdv-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 0.4rem;
+  }
+  .pdv-progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.2);
+    overflow: hidden;
+  }
+  .pdv-progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: white;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .pdv-checklist { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pdv-group { }
+  .pdv-group-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 0.75rem;
+    padding-left: 4px;
+  }
+  .pdv-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    background: var(--dark-2);
+    border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+  .pdv-item:hover { border-color: rgba(232,71,26,0.3); }
+  .pdv-item.checked { background: rgba(0,168,150,0.08); border-color: rgba(0,168,150,0.3); }
+  .pdv-checkbox {
+    width: 20px; height: 20px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    margin-top: 1px;
+  }
+  .pdv-item.checked .pdv-checkbox { background: var(--teal); border-color: var(--teal); }
+  .pdv-checkbox svg { display: none; }
+  .pdv-item.checked .pdv-checkbox svg { display: block; }
+  .pdv-item-text strong { font-size: 0.9rem; font-weight: 500; display: block; }
+  .pdv-item.checked .pdv-item-text strong { color: var(--teal); }
+  .pdv-item-text small { font-size: 0.78rem; color: var(--gray); margin-top: 2px; display: block; }
+
+  /* ─── CICLO DA VISITA ─── */
+  #ciclo { background: var(--dark-2); }
+  .ciclo-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .ciclo-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(10% + 1.5rem);
+    right: calc(10% + 1.5rem);
+    height: 2px;
+    background: linear-gradient(to right, var(--orange), rgba(232,71,26,0.2));
+    z-index: 0;
+  }
+  .ciclo-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .ciclo-num {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    box-shadow: 0 0 0 6px rgba(232,71,26,0.15);
+    transition: transform 0.2s;
+  }
+  .ciclo-step:hover .ciclo-num { transform: scale(1.08); }
+  .ciclo-step-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .ciclo-step h3 { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.3rem; line-height: 1.3; }
+  .ciclo-step .time-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--orange);
+    background: rgba(232,71,26,0.1);
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+  .ciclo-step p { font-size: 0.8rem; color: var(--gray); line-height: 1.55; }
+
+  /* ─── KPIs ─── */
+  #kpis { background: var(--dark); }
+  .kpi-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .kpi-card {
+    background: var(--dark-2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+  }
+  .kpi-val {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-label { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; }
+  .kpi-sub { font-size: 0.78rem; color: var(--gray); }
+  .kpi-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .kpi-table { width: 100%; border-collapse: collapse; }
+  .kpi-table th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .kpi-table td {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.88rem;
+    color: #C0BFD8;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+  }
+  .kpi-table tr:last-child td { border-bottom: none; }
+  .freq-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .freq-badge.diario { background: rgba(232,71,26,0.15); color: var(--orange); }
+  .freq-badge.semanal { background: rgba(0,168,150,0.15); color: var(--teal); }
+  .freq-badge.visita { background: rgba(58,58,88,0.6); color: var(--gray); }
+  .posvenda-list { }
+  .posvenda-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--dark-2);
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    color: #C0BFD8;
+  }
+  .posvenda-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ─── CLOSING ─── */
+  #closing {
+    background: var(--orange);
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-bg {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .closing-bg.b1 { width: 500px; height: 500px; top: -200px; left: -100px; background: rgba(0,0,0,0.12); }
+  .closing-bg.b2 { width: 350px; height: 350px; bottom: -150px; right: -50px; background: rgba(0,0,0,0.1); }
+  .closing-inner { position: relative; z-index: 1; }
+  .closing-inner h2 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .closing-inner p { font-size: 1.15rem; color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto; }
+  .closing-divider {
+    width: 60px; height: 3px;
+    background: rgba(255,255,255,0.4);
+    margin: 1.5rem auto;
+  }
+  .closing-inner .brand {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ─── FADE IN ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .quem-grid, .versus-grid, .objetivo-grid, .kpi-bottom { grid-template-columns: 1fr; }
+    .vs-badge { display: none; }
+    .attr-grid { grid-template-columns: 1fr 1fr; }
+    .ciclo-steps { grid-template-columns: 1fr; }
+    .ciclo-steps::before { display: none; }
+    .kpi-top { grid-template-columns: 1fr 1fr; }
+    .pdv-layout { grid-template-columns: 1fr; }
+    .pdv-sidebar { position: static; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    #hero { padding: 5rem 1.25rem 3rem; }
+    .jornada-timeline::before { left: 60px; }
+    .jornada-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+  }
+  @media (max-width: 540px) {
+    .attr-grid { grid-template-columns: 1fr; }
+    .kpi-top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Yandeh · Jornada de Vendas</div>
+  <ul class="nav-links">
+    <li><a href="#quem-somos">Identidade</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#protagonista">Protagonista</a></li>
+    <li><a href="#objetivo">Objetivo</a></li>
+    <li><a href="#rotina">Rotina</a></li>
+    <li><a href="#pdv">PDV</a></li>
+    <li><a href="#ciclo">Ciclo</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-bg-circle c3"></div>
+  <div class="hero-eyebrow">Identidade e Papel · Jornada de Vendas</div>
+  <h1 class="hero-headline">
+    Incon<span>for</span>mados<br>
+    e incan<span>sáveis</span><br>
+    por resultado.
+  </h1>
+  <p class="hero-sub">Não somos tiradores de pedido. Somos quem entende o negócio do cliente, antecipa problemas e transforma oportunidade em resultado.</p>
+  <a href="#quem-somos" class="hero-cta">
+    Explorar o guia
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+  </a>
+  <div class="hero-scroll-hint">
+    <div class="line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="quem-somos">
+  <div class="section-label">Identidade do time</div>
+  <h2 class="section-title fade-in">Quem <span>somos</span></h2>
+  <div class="quem-grid">
+    <div class="quem-left fade-in">
+      <p>Somos um time de inconformados e incansáveis por resultado. Existimos para fazer o cliente crescer, e crescer com ele.</p>
+      <div class="big-quote">"Não somos tiradores de pedido."</div>
+      <p>A gente entra na loja com um objetivo claro: gerar negócio sustentável. Encantar o cliente não é discurso — é prática diária: entender a necessidade real, sugerir o mix certo, cuidar da execução até o final e garantir que o resultado aconteça.</p>
+    </div>
+    <div class="quem-right fade-in">
+      <div class="pillar-card">
+        <div class="pillar-icon">🔍</div>
+        <div>
+          <h3>Entende o negócio</h3>
+          <p>Antecipa problemas e transforma oportunidade em resultado. Não reage — age primeiro.</p>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <h3>Objetivo claro</h3>
+          <p>Entra na loja para gerar negócio sustentável, não apenas fazer uma visita de cortesia.</p>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🤝</div>
+        <div>
+          <h3>Encanta na prática</h3>
+          <p>Entende a necessidade real, sugere o mix certo e cuida da execução até o resultado acontecer.</p>
+        </div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">📊</div>
+        <div>
+          <h3>Usa dados pra agir</h3>
+          <p>Transforma o campo em inteligência. Traz informação relevante que faz a empresa decidir com precisão.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTAGONISTA vs OPERACIONAL -->
+<section id="quiz">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jornada de Vendas</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: --dark;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .btn-quiz {
+      padding: 20px 30px;
+      background: ORANGE;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: bold;
+      display: block;
+      margin: 0 auto
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+      background: #1a1d2e;
+      width: 90%;
+      max-width: 500px;
+      padding: 2rem;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .fechar {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .quiz-question {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quiz-options button {
+      padding: 14px;
+      background: orange;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .quiz-result {
+      margin-top: 20px;
+      font-weight: bold;
+      line-height: 1.5;
+      font-size: 2.5rem;
+    }
+
+    .quiz-progress {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 15px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    #quiz-bar {
+      height: 100%;
+      width: 0%;
+      background: orange;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+
+<body>
+<div class="section-label">Quiz: Diagnóstico</div>
+
+  <h1>Você é protagonista ou operacional?</h1>
+
+  <button class="btn-quiz" onclick="abrirQuiz()">
+    Fazer diagnóstico
+  </button>
+
+  <div id="quizModal" class="modal">
+    <div class="modal-content">
+
+      <span class="fechar" onclick="fecharQuiz()">&times;</span>
+
+      <h2>Você é protagonista?</h2>
+
+      <div class="quiz-progress">
+        <div id="quiz-bar"></div>
+      </div>
+
+      <p id="question" class="quiz-question"></p>
+
+      <div class="quiz-options" id="options">
+        <button onclick="answer(2)">Sempre</button>
+        <button onclick="answer(1)">Às vezes</button>
+        <button onclick="answer(0)">Nunca</button>
+      </div>
+
+      <p id="result" class="quiz-result"></p>
+
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      "Você analisa o PDV antes de falar com o cliente?",
+      "Você sugere mix baseado em dados?",
+      "Você faz pós-venda ativo?",
+      "Você antecipa problemas do cliente?"
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+
+    function abrirQuiz() {
+      document.getElementById("quizModal").style.display = "block";
+      resetQuiz();
+    }
+
+    function fecharQuiz() {
+      document.getElementById("quizModal").style.display = "none";
+    }
+
+    function resetQuiz() {
+      currentQ = 0;
+      score = 0;
+
+      document.getElementById("result").textContent = "";
+      document.getElementById("question").style.display = "block";
+      document.getElementById("options").style.display = "flex";
+      document.getElementById("quiz-bar").style.width = "0%";
+
+      showQuestion();
+    }
+
+    function showQuestion() {
+      document.getElementById("question").textContent = questions[currentQ];
+    }
+
+    function answer(value) {
+      score += value;
+      currentQ++;
+
+      atualizarBarra();
+
+      if (currentQ < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function atualizarBarra() {
+      const progresso = (currentQ / questions.length) * 100;
+      document.getElementById("quiz-bar").style.width = progresso + "%";
+    }
+
+    function showResult() {
+      const result = document.getElementById("result");
+
+      document.getElementById("question").style.display = "none";
+      document.getElementById("options").style.display = "none";
+
+      let textoFinal = "";
+
+      if (score >= 6) {
+        textoFinal = "🔥 Protagonista forte: Atua com visão de dono e consistência.";
+      } else if (score >= 3) {
+        textoFinal = "⚡ Em evolução: Já entendeu o jogo, falta consistência.";
+      } else {
+        textoFinal = "⚠️ Perfil operacional:Atua de forma reativa e básica.";
+      }
+
+      result.innerText = textoFinal;
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("quizModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
+
+
+<section id="protagonista">
+  <div class="section-label">Dois perfis</div>
+  <h2 class="section-title fade-in">Operacional <span>ou</span> Protagonista?</h2>
+  <div class="versus-grid fade-in">
+    <!-- Operacional -->
+    <div class="versus-card">
+      <div class="versus-card-header">
+        <div class="tag">Vendedor Operacional</div>
+        <h3>Executa pedido</h3>
+      </div>
+      <div class="versus-card-body">
+        <div class="versus-item"><div class="dot"></div>Foca em tirar pedido</div>
+        <div class="versus-item"><div class="dot"></div>Reage ao cliente, não antecipa</div>
+        <div class="versus-item"><div class="dot"></div>Trabalha com visão de curto prazo</div>
+        <div class="versus-item"><div class="dot"></div>Usa pouca análise de dados</div>
+        <div class="versus-item"><div class="dot"></div>Baixa influência no resultado</div>
+        <div class="versus-item"><div class="dot"></div>Pós-venda fraco ou inexistente</div>
+        <div class="versus-item"><div class="dot"></div>Enxerga carteira como lista, não negócio</div>
+      </div>
+      <div class="versus-verdict">Executa bem o que pedem, mas não constrói crescimento.</div>
+    </div>
+    <!-- VS -->
+    <div class="vs-badge">VS</div>
+    <!-- Protagonista -->
+    <div class="versus-card protagonist">
+      <div class="versus-card-header">
+        <div class="tag">Vendedor Protagonista</div>
+        <h3>Gera crescimento</h3>
+      </div>
+      <div class="versus-card-body">
+        <div class="versus-item"><div class="dot"></div>Mentalidade de dono</div>
+        <div class="versus-item"><div class="dot"></div>Atua de forma consultiva e estratégica</div>
+        <div class="versus-item"><div class="dot"></div>Antecipação faz parte do trabalho</div>
+        <div class="versus-item"><div class="dot"></div>Usa dados, leitura de mercado e PDV</div>
+        <div class="versus-item"><div class="dot"></div>Influencia o resultado do cliente</div>
+        <div class="versus-item"><div class="dot"></div>Protagonista do pré ao pós-venda</div>
+        <div class="versus-item"><div class="dot"></div>Constrói recorrência e crescimento sustentável</div>
+      </div>
+      <div class="versus-verdict">Não vende produto — cresce o cliente e cresce junto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ATRIBUTOS -->
+<section id="atributos">
+  <div class="section-label">Mindset do protagonista</div>
+  <h2 class="section-title fade-in">Sou dono dos <span>meus resultados</span></h2>
+  <div class="attr-intro fade-in">Sou protagonista, dono e responsável pelo que acontece na minha carteira.</div>
+  <div class="attr-grid fade-in">
+    <div class="attr-item">
+      <div class="attr-num">01</div>
+      <div class="attr-item-icon">👥</div>
+      <p>Conheço minha carteira de clientes e conheço meus clientes</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">02</div>
+      <div class="attr-item-icon">🤝</div>
+      <p>Construo relacionamento e conexão real</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">03</div>
+      <div class="attr-item-icon">🏢</div>
+      <p>Sou o rosto da empresa em cada ação e negociação</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">04</div>
+      <div class="attr-item-icon">🎯</div>
+      <p>Acompanho a meta e sei exatamente qual é meu objetivo</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">05</div>
+      <div class="attr-item-icon">🔁</div>
+      <p>Construo recorrência, não venda pontual</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">06</div>
+      <div class="attr-item-icon">📦</div>
+      <p>Conheço o portfólio, as campanhas e acompanho o mercado</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">07</div>
+      <div class="attr-item-icon">💡</div>
+      <p>Tenho postura consultiva — resolvo problema, não empurro produto</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">08</div>
+      <div class="attr-item-icon">⚡</div>
+      <p>Sou proativo — não espero, faço acontecer</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">09</div>
+      <div class="attr-item-icon">🔄</div>
+      <p>Cuido do meu cliente do início ao fim: pré, venda e pós</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">10</div>
+      <div class="attr-item-icon">📊</div>
+      <p>Trago informação de campo com qualidade</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">11</div>
+      <div class="attr-item-icon">✅</div>
+      <p>Cumpro processos com disciplina</p>
+    </div>
+    <div class="attr-item">
+      <div class="attr-num">12</div>
+      <div class="attr-item-icon">💪</div>
+      <p>Me adapto, insisto e não desisto fácil</p>
+    </div>
+  </div>
+</section>
+
+<!-- OBJETIVO -->
+<section id="objetivo">
+  <div class="section-label">Propósito do time</div>
+  <h2 class="section-title fade-in">Nosso <span>objetivo</span></h2>
+  <div class="objetivo-quote fade-in">"A gente cresce quando o cliente cresce."</div>
+  <div class="objetivo-grid fade-in">
+    <div class="obj-card">
+      <div class="obj-card-top">
+        <span class="obj-num">01</span>
+        <h3>Inteligência de Mercado</h3>
+      </div>
+      <div class="obj-card-body">
+        <div class="obj-item"><div class="dot"></div>Preço da concorrência</div>
+        <div class="obj-item"><div class="dot"></div>Movimentos do mercado</div>
+        <div class="obj-item"><div class="dot"></div>Objeções reais do cliente</div>
+        <div class="obj-item"><div class="dot"></div>Oportunidades escondidas</div>
+      </div>
+      <div class="obj-foot">Sem isso, a empresa decide no escuro. Com isso, a gente sai na frente.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-card-top">
+        <span class="obj-num">02</span>
+        <h3>Vender Melhor</h3>
+      </div>
+      <div class="obj-card-body">
+        <div class="obj-item"><div class="dot"></div>Mix certo para cada loja</div>
+        <div class="obj-item"><div class="dot"></div>Aumento de SKUs estratégicos</div>
+        <div class="obj-item"><div class="dot"></div>Recorrência da carteira</div>
+        <div class="obj-item"><div class="dot"></div>Resultado sustentável</div>
+      </div>
+      <div class="obj-foot">Não é só vender mais — é vender melhor.</div>
+    </div>
+    <div class="obj-card">
+      <div class="obj-card-top">
+        <span class="obj-num">03</span>
+        <h3>Execução na Gôndola</h3>
+      </div>
+      <div class="obj-card-body">
+        <div class="obj-item"><div class="dot"></div>Evita ruptura</div>
+        <div class="obj-item"><div class="dot"></div>Melhora exposição</div>
+        <div class="obj-item"><div class="dot"></div>Garante giro de produtos</div>
+	<div class="obj-item"><div class=></div> </div>
+	<div class="obj-item"><div class=></div> </div>
+      </div>
+      <div class="obj-foot">A gente não vende no papel — vende na gôndola.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTINA -->
+<section id="rotina">
+  <div class="section-label">Estrutura do dia</div>
+  <h2 class="section-title fade-in">A rotina <span>garante</span> resultado</h2>
+  <div class="jornada-timeline fade-in">
+    <div class="jornada-item">
+      <div class="jornada-time-col"><span class="jornada-time">07–08h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">🌅</span> Planejamento e preparação</h3>
+        <p>Revisar a rota do dia no sistema, checar histórico de compras e pendências dos clientes. Definir o objetivo de cada visita: reativação, expansão de mix ou cobrança.</p>
+        <div class="jornada-tags">
+          <span class="jtag orange">App Yandeh</span>
+          <span class="jtag orange">Rota otimizada</span>
+          <span class="jtag slate">Meta do dia</span>
+        </div>
+      </div>
+    </div>
+    <div class="jornada-item dim">
+      <div class="jornada-time-col"><span class="jornada-time">08–09h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">🚗</span> Deslocamento e chegada</h3>
+        <p>Seguir a rota planejada. Ao chegar, observar a fachada antes de entrar: estoque visível, promotores da concorrência, nível de movimento da loja.</p>
+        <div class="jornada-tags">
+          <span class="jtag slate">Observação externa</span>
+          <span class="jtag orange">PDV</span>
+        </div>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="jornada-time-col"><span class="jornada-time">09–12h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">🏪</span> Bloco de visitas — manhã (3–5 lojas)</h3>
+        <p>Ciclo completo por loja: análise de PDV → abordagem ao responsável → verificação de ruptura → apresentação de oferta → fechamento → registro no sistema.</p>
+        <div class="jornada-tags">
+          <span class="jtag orange">Análise PDV</span>
+          <span class="jtag orange">Negociação</span>
+          <span class="jtag teal">Registro</span>
+        </div>
+      </div>
+    </div>
+    <div class="jornada-item dim">
+      <div class="jornada-time-col"><span class="jornada-time">12–13h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">📱</span> Pausa + atualização de dados</h3>
+        <p>Registrar pedidos feitos, atualizar status no sistema e acionar clientes remotos por telefone ou WhatsApp. Verificar clientes da carteira que não foram visitados.</p>
+        <div class="jornada-tags">
+          <span class="jtag slate">Remoto / telefone</span>
+          <span class="jtag teal">Pipeline</span>
+        </div>
+      </div>
+    </div>
+    <div class="jornada-item">
+      <div class="jornada-time-col"><span class="jornada-time">13–17h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">🏪</span> Bloco de visitas — tarde (3–4 lojas)</h3>
+        <p>Priorizar clientes com maior potencial de expansão de mix ou que precisam de acompanhamento de pendências. Registrar informações de pós-venda e insights de PDV.</p>
+        <div class="jornada-tags">
+          <span class="jtag orange">Análise PDV</span>
+          <span class="jtag orange">Expansão de mix</span>
+          <span class="jtag teal">Pós-venda</span>
+        </div>
+      </div>
+    </div>
+    <div class="jornada-item dim">
+      <div class="jornada-time-col"><span class="jornada-time">17–18h</span></div>
+      <div class="jornada-body">
+        <h3><span class="ej">📊</span> Fechamento do dia</h3>
+        <p>Consolidar pedidos, atualizar pipeline, registrar insights de PDV e preparar a pauta do dia seguinte. Reportar ao líder de equipe se necessário.</p>
+        <div class="jornada-tags">
+          <span class="jtag slate">Relatório</span>
+          <span class="jtag teal">Planejamento</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PDV -->
+<section id="pdv">
+  <div class="section-label">No ponto de venda</div>
+  <h2 class="section-title fade-in">Análise de <span>PDV</span></h2>
+  <div class="pdv-layout fade-in">
+    <div class="pdv-sidebar">
+      <h3>Olhar crítico, sempre.</h3>
+      <p>Não passeie pela loja. Entre com um objetivo e saia com informação de qualidade.</p>
+      <div class="pdv-tip">🔑 O que o vendedor protagonista vê ao entrar em cada loja é o que diferencia resultado de visita.</div>
+      <div class="pdv-progress-wrap">
+        <div class="pdv-progress-label">
+          <span>Progresso</span>
+          <span id="pdv-count">0 / 12</span>
+        </div>
+        <div class="pdv-progress-bar">
+          <div class="pdv-progress-fill" id="pdv-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="pdv-checklist">
+      <div class="pdv-group">
+        <div class="pdv-group-title">Exposição e presença de produto</div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Produtos Yandeh no nível dos olhos ou área nobre?</strong><small>Posição ideal: altura da cintura ao ombro, frente para o corredor principal</small></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Itens com precificação visível e correta?</strong><small>Verificar precificador, etiqueta e sistema de preço da loja</small></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Material de PDV ativo (wobbler, display, banner)?</strong></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Frente das embalagens voltada para o shopper?</strong></div>
+        </div>
+      </div>
+      <div class="pdv-group">
+        <div class="pdv-group-title">Estoque e ruptura</div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Nível de estoque visível adequado?</strong><small>Estoque mínimo de prateleira: 3 unidades por SKU</small></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Alguma ruptura identificada (espaço vazio na gôndola)?</strong><small>Registrar produto, posição e causa provável</small></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Estoque no depósito foi verificado?</strong></div>
+        </div>
+      </div>
+      <div class="pdv-group">
+        <div class="pdv-group-title">Concorrência e contexto</div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Produtos concorrentes mapeados no mesmo espaço?</strong><small>Registrar marca, preço e posição</small></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Há ação promocional ativa da concorrência?</strong></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Loja está em alguma campanha ou data especial?</strong></div>
+        </div>
+      </div>
+      <div class="pdv-group">
+        <div class="pdv-group-title">Relacionamento e potencial</div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Responsável pela compra identificado e abordado?</strong></div>
+        </div>
+        <div class="pdv-item" onclick="togglePdv(this)">
+          <div class="pdv-checkbox"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,5 4.5,8.5 11,1"/></svg></div>
+          <div class="pdv-item-text"><strong>Há espaço para ampliar o mix atual nesta loja?</strong><small>Comparar portfólio comprado vs. portfólio disponível</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CICLO DA VISITA -->
+<section id="ciclo">
+  <div class="section-label">Execução da visita</div>
+  <h2 class="section-title fade-in">Ciclo da <span>visita</span></h2>
+  <p style="color:var(--gray); margin-top:0.5rem; margin-bottom:0; font-size:0.9rem;" class="fade-in">check-in → missão → pedido sugerido → checkout</p>
+  <div class="ciclo-steps fade-in">
+    <div class="ciclo-step">
+      <div class="ciclo-num">1</div>
+      <div class="ciclo-step-icon">🔍</div>
+      <h3>Entrada e diagnóstico</h3>
+      <div class="time-badge">5–10 min</div>
+      <p>Percorra a loja antes de falar com o dono. Observe gôndola, rupturas, PDV e movimento de clientes.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">2</div>
+      <div class="ciclo-step-icon">🤝</div>
+      <h3>Abordagem ao decisor</h3>
+      <div class="time-badge">5 min</div>
+      <p>Cumprimente o responsável. Inicie com dado positivo ou oportunidade identificada na loja.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">3</div>
+      <div class="ciclo-step-icon">💼</div>
+      <h3>Apresentação de oferta</h3>
+      <div class="time-badge">10–15 min</div>
+      <p>Use dados do sistema. Mostre histórico, giro esperado e margem. Apresente 2–3 opções, não uma lista.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">4</div>
+      <div class="ciclo-step-icon">✅</div>
+      <h3>Fechamento e registro</h3>
+      <div class="time-badge">5 min</div>
+      <p>Confirme o pedido no sistema na hora. Informe prazo e pagamento. Trate pendências antes de sair.</p>
+    </div>
+    <div class="ciclo-step">
+      <div class="ciclo-num">5</div>
+      <div class="ciclo-step-icon">📝</div>
+      <h3>Saída e próxima visita</h3>
+      <div class="time-badge">2 min</div>
+      <p>Registre o resultado, anote insight da loja e combine a próxima data com o responsável.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section id="kpis">
+  <div class="section-label">Performance e pós-venda</div>
+  <h2 class="section-title fade-in">Dados & <span>pós-venda</span></h2>
+  <p style="color:var(--gray); font-size:0.95rem; font-style:italic; margin-top:0.5rem;" class="fade-in">O campo gera inteligência. Use-a.</p>
+  <div class="kpi-top fade-in">
+    <div class="kpi-card">
+      <div class="kpi-val">6–9</div>
+      <div class="kpi-label">visitas / dia</div>
+      <div class="kpi-sub">meta de campo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">≥60%</div>
+      <div class="kpi-label">taxa de conversão</div>
+      <div class="kpi-sub">visitas → pedido</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">4–6</div>
+      <div class="kpi-label">SKUs / pedido</div>
+      <div class="kpi-sub">mix médio</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">100%</div>
+      <div class="kpi-label">cobertura da rota</div>
+      <div class="kpi-sub">por ciclo</div>
+    </div>
+  </div>
+  <div class="kpi-bottom fade-in">
+    <div>
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>Indicador</th>
+            <th>Como verificar</th>
+            <th>Frequência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Volume de vendas vs. meta</td>
+            <td>Dashboard do app</td>
+            <td><span class="freq-badge diario">Diário</span></td>
+          </tr>
+          <tr>
+            <td>Clientes inativos (30+ dias)</td>
+            <td>Relatório de carteira</td>
+            <td><span class="freq-badge semanal">Semanal</span></td>
+          </tr>
+          <tr>
+            <td>Ruptura registrada por loja</td>
+            <td>App Yandeh → PDV</td>
+            <td><span class="freq-badge diario">Diário</span></td>
+          </tr>
+          <tr>
+            <td>Mix de SKUs por cliente</td>
+            <td>Histórico de pedidos</td>
+            <td><span class="freq-badge semanal">Semanal</span></td>
+          </tr>
+          <tr>
+            <td>Inadimplência da carteira</td>
+            <td>Financeiro / backoffice</td>
+            <td><span class="freq-badge semanal">Semanal</span></td>
+          </tr>
+          <tr>
+            <td>Share of shelf vs. concorrência</td>
+            <td>Registro manual no PDV</td>
+            <td><span class="freq-badge visita">Por visita</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;">Pós-venda: o que fazer após o pedido</div>
+      <div class="posvenda-item"><div class="posvenda-dot"></div>Confirmar pedido por WhatsApp com número do protocolo</div>
+      <div class="posvenda-item"><div class="posvenda-dot"></div>Acompanhar entrega no dia programado — avisar o cliente antes que ele reclame</div>
+      <div class="posvenda-item"><div class="posvenda-dot"></div>Verificar se o produto chegou correto: SKU, quantidade e validade</div>
+      <div class="posvenda-item"><div class="posvenda-dot"></div>Registrar feedback do lojista no sistema: produto, entrega, preço</div>
+      <div class="posvenda-item"><div class="posvenda-dot"></div>Planejar a próxima visita considerando o giro esperado do pedido atual</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="closing-bg b1"></div>
+  <div class="closing-bg b2"></div>
+  <div class="closing-inner">
+    <h2>O resultado<br>começa<br>em você.</h2>
+    <div class="closing-divider"></div>
+    <p>Não somos tiradores de pedido. Somos protagonistas do crescimento do cliente — e do nosso.</p>
+    <div style="margin-top:2rem;" class="brand">Yandeh · Identidade e Papel · Jornada de Vendas</div>
+  </div>
+</section>
+
+<script>
+  // Fade-in on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  faders.forEach(f => observer.observe(f));
+
+  // PDV checklist
+  const TOTAL = 12;
+  function togglePdv(el) {
+    el.classList.toggle('checked');
+    const checked = document.querySelectorAll('.pdv-item.checked').length;
+    document.getElementById('pdv-count').textContent = checked + ' / ' + TOTAL;
+    document.getElementById('pdv-bar').style.width = Math.round(checked / TOTAL * 100) + '%';
+  }
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    });
+  });
+</script>
+</body>
+</html>
