@@ -483,7 +483,7 @@
     font-family: var(--font-display);
     font-weight: 900;
     font-size: 1.6rem;
-    color: rgba(232,71,26,0.2);
+    color: rgb(232, 71, 26);
     line-height: 1;
     flex-shrink: 0;
     width: 32px;
@@ -549,10 +549,10 @@
   .obj-item .dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
   .obj-card:nth-child(1) .dot { background: var(--orange); }
   .obj-card:nth-child(2) .dot { background: var(--teal); }
-  .obj-card:nth-child(3) .dot { background: var(--gray); }
+  .obj-card:nth-child(3) .dot { background: var(--roseta); }
   .obj-foot {
     padding: 0.85rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 1 rem;
     font-style: italic;
     color: var(--gray);
     background: var(--dark-3);
@@ -600,10 +600,10 @@
   .jornada-item.dim .jornada-time-col::after { background: var(--slate); box-shadow: none; }
   .jornada-time {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.8rem;
     color: var(--orange);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }
   .jornada-item.dim .jornada-time { color: var(--gray); }
   .jornada-body {
@@ -1073,7 +1073,7 @@
     <!-- Operacional -->
     <div class="versus-card">
       <div class="versus-card-header">
-        <div class="tag">Vendedor Operacional</div>
+        <div class="tag">Consultor Operacional</div>
         <h3>Executa pedido</h3>
       </div>
       <div class="versus-card-body">
@@ -1092,7 +1092,7 @@
     <!-- Protagonista -->
     <div class="versus-card protagonist">
       <div class="versus-card-header">
-        <div class="tag">Vendedor Protagonista</div>
+        <div class="tag">Consultor Protagonista</div>
         <h3>Gera crescimento</h3>
       </div>
       <div class="versus-card-body">
@@ -1231,7 +1231,7 @@
   <h2 class="section-title fade-in">A rotina <span>garante</span> resultado</h2>
   <div class="jornada-timeline fade-in">
     <div class="jornada-item">
-      <div class="jornada-time-col"><span class="jornada-time">07–08h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">1° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">🌅</span> Planejamento e preparação</h3>
         <p>Revisar a rota do dia no sistema, checar histórico de compras e pendências dos clientes. Definir o objetivo de cada visita: reativação, expansão de mix ou cobrança.</p>
@@ -1243,7 +1243,7 @@
       </div>
     </div>
     <div class="jornada-item dim">
-      <div class="jornada-time-col"><span class="jornada-time">08–09h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">2° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">🚗</span> Deslocamento e chegada</h3>
         <p>Seguir a rota planejada. Ao chegar, observar a fachada antes de entrar: estoque visível, promotores da concorrência, nível de movimento da loja.</p>
@@ -1254,7 +1254,7 @@
       </div>
     </div>
     <div class="jornada-item">
-      <div class="jornada-time-col"><span class="jornada-time">09–12h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">3° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">🏪</span> Bloco de visitas — manhã (3–5 lojas)</h3>
         <p>Ciclo completo por loja: análise de PDV → abordagem ao responsável → verificação de ruptura → apresentação de oferta → fechamento → registro no sistema.</p>
@@ -1266,7 +1266,7 @@
       </div>
     </div>
     <div class="jornada-item dim">
-      <div class="jornada-time-col"><span class="jornada-time">12–13h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">4° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">📱</span> Pausa + atualização de dados</h3>
         <p>Registrar pedidos feitos, atualizar status no sistema e acionar clientes remotos por telefone ou WhatsApp. Verificar clientes da carteira que não foram visitados.</p>
@@ -1277,7 +1277,7 @@
       </div>
     </div>
     <div class="jornada-item">
-      <div class="jornada-time-col"><span class="jornada-time">13–17h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">5° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">🏪</span> Bloco de visitas — tarde (3–4 lojas)</h3>
         <p>Priorizar clientes com maior potencial de expansão de mix ou que precisam de acompanhamento de pendências. Registrar informações de pós-venda e insights de PDV.</p>
@@ -1289,7 +1289,7 @@
       </div>
     </div>
     <div class="jornada-item dim">
-      <div class="jornada-time-col"><span class="jornada-time">17–18h</span></div>
+      <div class="jornada-time-col"><span class="jornada-time">6° Passo</span></div>
       <div class="jornada-body">
         <h3><span class="ej">📊</span> Fechamento do dia</h3>
         <p>Consolidar pedidos, atualizar pipeline, registrar insights de PDV e preparar a pauta do dia seguinte. Reportar ao líder de equipe se necessário.</p>
@@ -1310,7 +1310,7 @@
     <div class="pdv-sidebar">
       <h3>Olhar crítico, sempre.</h3>
       <p>Não passeie pela loja. Entre com um objetivo e saia com informação de qualidade.</p>
-      <div class="pdv-tip">🔑 O que o vendedor protagonista vê ao entrar em cada loja é o que diferencia resultado de visita.</div>
+      <div class="pdv-tip">🔑 O que o consultor protagonista vê ao entrar em cada loja é o que diferencia resultado de visita.</div>
       <div class="pdv-progress-wrap">
         <div class="pdv-progress-label">
           <span>Progresso</span>
@@ -1396,35 +1396,30 @@
       <div class="ciclo-num">1</div>
       <div class="ciclo-step-icon">🔍</div>
       <h3>Entrada e diagnóstico</h3>
-      <div class="time-badge">5–10 min</div>
       <p>Percorra a loja antes de falar com o dono. Observe gôndola, rupturas, PDV e movimento de clientes.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-num">2</div>
       <div class="ciclo-step-icon">🤝</div>
       <h3>Abordagem ao decisor</h3>
-      <div class="time-badge">5 min</div>
       <p>Cumprimente o responsável. Inicie com dado positivo ou oportunidade identificada na loja.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-num">3</div>
       <div class="ciclo-step-icon">💼</div>
       <h3>Apresentação de oferta</h3>
-      <div class="time-badge">10–15 min</div>
       <p>Use dados do sistema. Mostre histórico, giro esperado e margem. Apresente 2–3 opções, não uma lista.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-num">4</div>
       <div class="ciclo-step-icon">✅</div>
       <h3>Fechamento e registro</h3>
-      <div class="time-badge">5 min</div>
       <p>Confirme o pedido no sistema na hora. Informe prazo e pagamento. Trate pendências antes de sair.</p>
     </div>
     <div class="ciclo-step">
       <div class="ciclo-num">5</div>
       <div class="ciclo-step-icon">📝</div>
       <h3>Saída e próxima visita</h3>
-      <div class="time-badge">2 min</div>
       <p>Registre o resultado, anote insight da loja e combine a próxima data com o responsável.</p>
     </div>
   </div>
