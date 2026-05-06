@@ -7,10 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-	atributos {
-  background: #393b3b;
-  text-align: center;
-}
 
   :root {
     --orange: #E8471A;
@@ -33,91 +29,105 @@
 
   html { scroll-behavior: smooth; }
 
-	  /* ─── QUIZ ─── */
-	        .btn-quiz {
-      padding: 20px 30px;
-      background: var(--orange);
-      border: none;
-      color: white;
-      cursor: pointer;
-      border-radius: 10px;
-      font-weight: bold;
-      display: block;
-      margin: 0 auto
-    }
+  /* ─── QUIZ ─── */
+  .btn-quiz {
+    padding: 20px 30px;
+    background: var(--orange);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    display: block;
+    margin: 2rem auto 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-quiz:hover { background: var(--orange-d); transform: translateY(-2px); }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-    }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+  }
 
-    .modal-content {
-      background: #393b3b;
-      width: 90%;
-      max-width: 500px;
-      padding: 2rem;
-      border-radius: 10px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  .modal-content {
+    background: #030303;
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .fechar {
-      position: absolute;
-      right: 15px;
-      top: 10px;
-      font-size: 22px;
-      cursor: pointer;
-    }
+  .fechar {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--gray);
+  }
+  .fechar:hover { color: var(--white); }
 
-    .quiz-question {
-      font-size: 1.4rem;
-      margin-bottom: 2rem;
-    }
+  .quiz-question {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
 
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    .quiz-options button {
-      padding: 14px;
-      background: var(--orange);
-      border: none;
-      color: white;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  .quiz-options button {
+    padding: 14px;
+    background: var(--orange);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: background 0.2s;
+  }
+  .quiz-options button:hover { background: var(--orange-d); }
 
-    .quiz-result {
-      margin-top: 20px;
-      font-weight: bold;
-      line-height: 1.5;
-      font-size: 2.5rem;
-    }
+  .quiz-result {
+    margin-top: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 2rem;
+  }
 
-    .quiz-progress {
-      height: 6px;
-      background: rgba(255,255,255,0.1);
-      margin-bottom: 15px;
-      border-radius: 3px;
-      overflow: hidden;
-    }
+  .quiz-progress {
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 15px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
 
-    #quiz-bar {
-      height: 100%;
-      width: 0%;
-      background: var(--orange);
-      transition: width 0.3s;
-	}
+  #quiz-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--orange);
+    transition: width 0.3s;
+    border-radius: 3px;
+  }
 
   /* ─── NAV ─── */
   nav {
@@ -168,6 +178,8 @@
     padding: 6rem 2.5rem 4rem;
     position: relative;
     overflow: hidden;
+    background: var(--dark);
+    color: var(--white);
   }
   .hero-bg-circle {
     position: absolute;
@@ -267,7 +279,7 @@
   }
 
   /* ─── SECTION BASE ─── */
-  section { padding: 6rem 2.5rem; }
+  section { padding: 6rem 2.5rem; color: var(--white); }
   .section-label {
     font-size: 0.68rem;
     font-weight: 600;
@@ -343,6 +355,18 @@
   .pillar-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
   .pillar-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.55; }
 
+  /* ─── QUIZ SECTION ─── */
+  #quiz { background: var(--dark); }
+  #quiz h1 {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
   /* ─── PROTAGONISTA ─── */
   #protagonista { background: var(--dark); }
   .versus-grid {
@@ -377,10 +401,9 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: (#ffd8e7);
+    color: rgba(255,255,255,0.7);
     margin-bottom: 0.4rem;
   }
-  .versus-card.protagonist .versus-card-header .tag { color: rgba(255,255,255,0.7); }
   .versus-card-header h3 {
     font-family: var(--font-display);
     font-weight: 900;
@@ -422,6 +445,7 @@
   }
 
   /* ─── ATRIBUTOS ─── */
+  #atributos { background: var(--dark-2); text-align: center; }
   .attr-intro {
     font-family: var(--font-display);
     font-weight: 700;
@@ -431,6 +455,9 @@
     letter-spacing: 0.02em;
     margin-bottom: 2.5rem;
     max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
   }
   .attr-grid {
     display: grid;
@@ -439,6 +466,7 @@
     background: rgba(255,255,255,0.06);
     border-radius: 8px;
     overflow: hidden;
+    text-align: left;
   }
   .attr-item {
     display: flex;
@@ -604,7 +632,7 @@
     border-radius: 3px;
   }
   .jtag.orange { background: rgba(232,71,26,0.15); color: var(--orange); }
-  .jtag.teal { background: rgba(0,168,150,0.35); color: var(#388e32); }
+  .jtag.teal { background: rgba(0,168,150,0.2); color: #4ecdc4; }
   .jtag.slate { background: rgba(58,58,88,0.6); color: var(--gray); }
 
   /* ─── PDV ─── */
@@ -663,7 +691,6 @@
     width: 0%;
   }
   .pdv-checklist { display: flex; flex-direction: column; gap: 1.5rem; }
-  .pdv-group { }
   .pdv-group-title {
     font-size: 0.68rem;
     font-weight: 700;
@@ -703,7 +730,7 @@
   .pdv-checkbox svg { display: none; }
   .pdv-item.checked .pdv-checkbox svg { display: block; }
   .pdv-item-text strong { font-size: 0.9rem; font-weight: 500; display: block; }
-  .pdv-item.checked .pdv-item-text strong { color: #067b2b; }
+  .pdv-item.checked .pdv-item-text strong { color: #4ecdc4; }
   .pdv-item-text small { font-size: 0.78rem; color: var(--gray); margin-top: 2px; display: block; }
 
   /* ─── CICLO DA VISITA ─── */
@@ -834,7 +861,6 @@
   .freq-badge.diario { background: rgba(232,71,26,0.15); color: var(--orange); }
   .freq-badge.semanal { background: rgba(0,168,150,0.15); color: var(--gray); }
   .freq-badge.visita { background: rgba(58,58,88,0.6); color: var(--gray); }
-  .posvenda-list { }
   .posvenda-item {
     display: flex;
     align-items: flex-start;
@@ -938,6 +964,7 @@
     <li><a href="#quem-somos">Identidade</a></li>
     <li><a href="#quiz">Quiz</a></li>
     <li><a href="#protagonista">Protagonista</a></li>
+    <li><a href="#atributos">Atributos</a></li>
     <li><a href="#objetivo">Objetivo</a></li>
     <li><a href="#rotina">Rotina</a></li>
     <li><a href="#pdv">PDV</a></li>
@@ -1011,124 +1038,32 @@
   </div>
 </section>
 
-<!-- PROTAGONISTA vs OPERACIONAL -->
+<!-- QUIZ -->
 <section id="quiz">
-  <meta charset="UTF-8">
-  <title>Jornada de Vendas</title>
+  <div class="section-label">Quiz: Diagnóstico</div>
+  <h2 class="section-title fade-in">Você é <span>protagonista</span> ou operacional?</h2>
 
-<div class="section-label">Quiz: Diagnóstico</div>
-
-  <h1>Você é protagonista ou operacional?</h1>
-
-  <button class="btn-quiz" onclick="abrirQuiz()">
-    Fazer diagnóstico
-  </button>
+  <button class="btn-quiz" onclick="abrirQuiz()">Fazer diagnóstico</button>
 
   <div id="quizModal" class="modal">
     <div class="modal-content">
-
       <span class="fechar" onclick="fecharQuiz()">&times;</span>
-
-      <h2>Você é protagonista?</h2>
-
+      <h2 style="font-family:var(--font-display);font-weight:900;font-size:1.8rem;text-transform:uppercase;margin-bottom:1.5rem;">Você é protagonista?</h2>
       <div class="quiz-progress">
         <div id="quiz-bar"></div>
       </div>
-
       <p id="question" class="quiz-question"></p>
-
       <div class="quiz-options" id="options">
         <button onclick="answer(2)">Sempre</button>
         <button onclick="answer(1)">Às vezes</button>
         <button onclick="answer(0)">Nunca</button>
       </div>
-
       <p id="result" class="quiz-result"></p>
-
     </div>
   </div>
+</section>
 
-  <script>
-    const questions = [
-      "Você analisa o PDV antes de falar com o cliente?",
-      "Você sugere mix baseado em dados?",
-      "Você faz pós-venda ativo?",
-      "Você antecipa problemas do cliente?"
-    ];
-
-    let currentQ = 0;
-    let score = 0;
-
-    function abrirQuiz() {
-      document.getElementById("quizModal").style.display = "block";
-      resetQuiz();
-    }
-
-    function fecharQuiz() {
-      document.getElementById("quizModal").style.display = "none";
-    }
-
-    function resetQuiz() {
-      currentQ = 0;
-      score = 0;
-
-      document.getElementById("result").textContent = "";
-      document.getElementById("question").style.display = "block";
-      document.getElementById("options").style.display = "flex";
-      document.getElementById("quiz-bar").style.width = "0%";
-
-      showQuestion();
-    }
-
-    function showQuestion() {
-      document.getElementById("question").textContent = questions[currentQ];
-    }
-
-    function answer(value) {
-      score += value;
-      currentQ++;
-
-      atualizarBarra();
-
-      if (currentQ < questions.length) {
-        showQuestion();
-      } else {
-        showResult();
-      }
-    }
-
-    function atualizarBarra() {
-      const progresso = (currentQ / questions.length) * 100;
-      document.getElementById("quiz-bar").style.width = progresso + "%";
-    }
-
-    function showResult() {
-      const result = document.getElementById("result");
-
-      document.getElementById("question").style.display = "none";
-      document.getElementById("options").style.display = "none";
-
-      let textoFinal = "";
-
-      if (score >= 6) {
-        textoFinal = "🔥 Protagonista forte:Atua com visão de dono e consistência.";
-      } else if (score >= 3) {
-        textoFinal = "⚡ Em evolução: Já entendeu o jogo, falta consistência.";
-      } else {
-        textoFinal = "⚠️ Perfil operacional:Atua de forma reativa e básica.";
-      }
-
-      result.innerText = textoFinal;
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById("quizModal");
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  </script>
-
+<!-- PROTAGONISTA vs OPERACIONAL -->
 <section id="protagonista">
   <div class="section-label">Dois perfis</div>
   <h2 class="section-title fade-in">Operacional <span>ou</span> Protagonista?</h2>
@@ -1173,8 +1108,8 @@
 </section>
 
 <!-- ATRIBUTOS -->
+<section id="atributos">
   <div class="section-label">Mindset do protagonista</div>
-	<section id="atributos">
   <h2 class="section-title fade-in">Sou dono dos <span>meus resultados</span></h2>
   <div class="attr-intro fade-in">Sou protagonista, dono e responsável pelo que acontece na minha carteira.</div>
   <div class="attr-grid fade-in">
@@ -1282,8 +1217,6 @@
         <div class="obj-item"><div class="dot"></div>Evita ruptura</div>
         <div class="obj-item"><div class="dot"></div>Melhora exposição</div>
         <div class="obj-item"><div class="dot"></div>Garante giro de produtos</div>
-	<div class="obj-item"><div class=></div> </div>
-	<div class="obj-item"><div class=></div> </div>
       </div>
       <div class="obj-foot">A gente não vende no papel — vende na gôndola.</div>
     </div>
@@ -1590,7 +1523,77 @@
 </section>
 
 <script>
-  // Fade-in on scroll
+  // ─── QUIZ ───
+  const questions = [
+    "Você analisa o PDV antes de falar com o cliente?",
+    "Você sugere mix baseado em dados?",
+    "Você faz pós-venda ativo?",
+    "Você antecipa problemas do cliente?"
+  ];
+
+  let currentQ = 0;
+  let score = 0;
+
+  function abrirQuiz() {
+    document.getElementById("quizModal").style.display = "block";
+    resetQuiz();
+  }
+
+  function fecharQuiz() {
+    document.getElementById("quizModal").style.display = "none";
+  }
+
+  function resetQuiz() {
+    currentQ = 0;
+    score = 0;
+    document.getElementById("result").textContent = "";
+    document.getElementById("question").style.display = "block";
+    document.getElementById("options").style.display = "flex";
+    document.getElementById("quiz-bar").style.width = "0%";
+    showQuestion();
+  }
+
+  function showQuestion() {
+    document.getElementById("question").textContent = questions[currentQ];
+  }
+
+  function answer(value) {
+    score += value;
+    currentQ++;
+    atualizarBarra();
+    if (currentQ < questions.length) {
+      showQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function atualizarBarra() {
+    const progresso = (currentQ / questions.length) * 100;
+    document.getElementById("quiz-bar").style.width = progresso + "%";
+  }
+
+  function showResult() {
+    const result = document.getElementById("result");
+    document.getElementById("question").style.display = "none";
+    document.getElementById("options").style.display = "none";
+    let textoFinal = "";
+    if (score >= 6) {
+      textoFinal = "🔥 Protagonista forte: Atua com visão de dono e consistência.";
+    } else if (score >= 3) {
+      textoFinal = "⚡ Em evolução: Já entendeu o jogo, falta consistência.";
+    } else {
+      textoFinal = "⚠️ Perfil operacional: Atua de forma reativa e básica.";
+    }
+    result.innerText = textoFinal;
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("quizModal");
+    if (event.target === modal) modal.style.display = "none";
+  };
+
+  // ─── FADE IN ───
   const faders = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -1602,7 +1605,7 @@
   }, { threshold: 0.1 });
   faders.forEach(f => observer.observe(f));
 
-  // PDV checklist
+  // ─── PDV CHECKLIST ───
   const TOTAL = 12;
   function togglePdv(el) {
     el.classList.toggle('checked');
@@ -1611,7 +1614,7 @@
     document.getElementById('pdv-bar').style.width = Math.round(checked / TOTAL * 100) + '%';
   }
 
-  // Active nav on scroll
+  // ─── ACTIVE NAV ───
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -1624,5 +1627,6 @@
     });
   });
 </script>
+
 </body>
 </html>
